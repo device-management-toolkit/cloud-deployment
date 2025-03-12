@@ -1,27 +1,27 @@
 [submodule "rpc"]
 	path = rpc
-	url = https://github.com/open-amt-cloud-toolkit/rpc.git
+	url = https://github.com/device-management-toolkit/rpc.git
 [submodule "rps"]
 	path = rps
-	url = https://github.com/open-amt-cloud-toolkit/rps.git
+	url = https://github.com/device-management-toolkit/rps.git
 [submodule "ui-toolkit"]
 	path = ui-toolkit
-	url = https://github.com/open-amt-cloud-toolkit/ui-toolkit.git
+	url = https://github.com/device-management-toolkit/ui-toolkit.git
 [submodule "mps"]
 	path = mps
-	url = https://github.com/open-amt-cloud-toolkit/mps.git
+	url = https://github.com/device-management-toolkit/mps.git
 [submodule "sample-web-ui"]
 	path = sample-web-ui
-	url = https://github.com/open-amt-cloud-toolkit/sample-web-ui.git
+	url = https://github.com/device-management-toolkit/sample-web-ui.git
 [submodule "mps-router"]
 	path = mps-router
-	url = https://github.com/open-amt-cloud-toolkit/mps-router.git
+	url = https://github.com/device-management-toolkit/mps-router.git
 [submodule "ui-toolkit-angular"]
 	path = ui-toolkit-angular
-	url = https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular.git
+	url = https://github.com/device-management-toolkit/ui-toolkit-angular.git
 [submodule "ui-toolkit-react"]
 	path = ui-toolkit-react
-	url = https://github.com/open-amt-cloud-toolkit/ui-toolkit-react.git
+	url = https://github.com/device-management-toolkit/ui-toolkit-react.git
 [submodule "rpc-go"]
 	path = rpc-go
-	url = https://github.com/open-amt-cloud-toolkit/rpc-go
+	url = https://github.com/device-management-toolkit/rpc-go
