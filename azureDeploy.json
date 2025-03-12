@@ -8,7 +8,7 @@
     },
     "containerStackName": {
       "type": "string",
-      "defaultValue": "open-amt-cloud-toolkit"
+      "defaultValue": "device-management-toolkit"
     },
     "registry": {
       "type": "string",
@@ -66,33 +66,33 @@
       "defaultValue": "false",
       "type": "string",
       "metadata": {
-        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Open AMT Cloud Toolkit documentation on https://open-amt-cloud-toolkit.github.io/docs/"
+        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Device Management Toolkit documentation on https://device-management-toolkit.github.io/docs/"
       }
     },
     "dbAdminUsername": {
       "type": "securestring",
       "defaultValue": "postgresadmin",
       "metadata": {
-        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Open AMT Cloud Toolkit documentation on https://open-amt-cloud-toolkit.github.io/docs/"
+        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Device Management Toolkit documentation on https://device-management-toolkit.github.io/docs/"
       }
     },
     "dbAdminPassword": {
       "type": "securestring",
       "defaultValue": "admin123",
       "metadata": {
-        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Open AMT Cloud Toolkit documentation on https://open-amt-cloud-toolkit.github.io/docs/"
+        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Device Management Toolkit documentation on https://device-management-toolkit.github.io/docs/"
       }
     },
     "mpsAdminUsername": {
       "type": "securestring",
       "metadata": {
-        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Open AMT Cloud Toolkit documentation on https://open-amt-cloud-toolkit.github.io/docs/"
+        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Device Management Toolkit documentation on https://device-management-toolkit.github.io/docs/"
       }
     },
     "mpsAdminPassword": {
       "type": "securestring",
       "metadata": {
-        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Open AMT Cloud Toolkit documentation on https://open-amt-cloud-toolkit.github.io/docs/"
+        "description": "For details on this property view the configuration documentation located under \"Microservices\" in the Device Management Toolkit documentation on https://device-management-toolkit.github.io/docs/"
       }
     },
     "tokenExpiration": {
