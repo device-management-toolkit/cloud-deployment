@@ -90,7 +90,7 @@ services:
       - openamtnetwork
   db:
     restart: always
-    image: postgres:15
+    image: postgres:17
     build:
       context: ./pg
       dockerfile: ./Dockerfile
@@ -98,7 +98,7 @@ services:
     networks:
       - openamtnetwork
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U rpsdb"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d rpsdb"]
       interval: 2s
       timeout: 3s
       retries: 30
