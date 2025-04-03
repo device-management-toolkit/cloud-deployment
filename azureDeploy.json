@@ -308,7 +308,7 @@
           {
             "name": "db",
             "properties": {
-              "image": "postgres:15",
+              "image": "postgres:17",
               "ports": [
                 {
                   "port": 5432
