@@ -15,7 +15,7 @@ Device Management Toolkit (formerly known as Open Active Management Technology C
 To clone live, in-development code (main branch):
 
 ```bash
-git clone --recursive https://github.com/device-management-toolkit/open-amt-cloud-toolkit.git
+git clone --recursive https://github.com/device-management-toolkit/cloud-deployment.git
 ```
 
 Alternatively, for steps to clone and Get Started with one of the tagged releases, [see our documentation][docs].
@@ -34,7 +34,7 @@ For more experienced users, deploy the stack on Azure using the 'Deploy to Azure
 
 > Note: This requires MPS, RPS, and Sample Web UI images to be built and accessible in a Container Image Registry such as Azure Container Registry (ACR), Docker Hub, or other options.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fopen-amt-cloud-toolkit%2Fopen-amt-cloud-toolkit%2Fv2.5.0%2FazureDeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdevice-management-toolkit%2Fcloud-deployment%2Fv2.5.0%2FazureDeploy.json)
 
 Optionally, deploy from AzureCLI using the following commands:
 
