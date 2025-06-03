@@ -18,5 +18,5 @@ jobs:
 
       - uses: actions/add-to-project@244f685bbc3b7adfa8466e08b698b5577571133e # v1.0.2
         with:
-          project-url: https://github.com/orgs/open-amt-cloud-toolkit/projects/10
+          project-url: https://github.com/orgs/device-management-toolkit/projects/10
           github-token: ${{ secrets.PROJECTS_PAT }}
