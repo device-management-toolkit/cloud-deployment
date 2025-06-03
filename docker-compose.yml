@@ -2,7 +2,7 @@
 # Copyright (c) Intel Corporation 2020
 # SPDX-License-Identifier: Apache-2.0
 #**********************************************************************/
-name: open-amt-cloud-toolkit
+name: device-management-toolkit
 
 services: 
   webui:
