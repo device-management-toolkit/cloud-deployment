@@ -26,14 +26,14 @@ jobs:
       - name: tar zip helm directory
         shell: bash
         run: |
-          (cd $GITHUB_WORKSPACE/kubernetes && tar -czvf open-amt-toolkit-helm.tar.gz charts)
+          (cd $GITHUB_WORKSPACE/kubernetes && tar -czvf device-mgmt-toolkit-helm.tar.gz charts)
 
       - name: upload helm tarball release artifact
         uses: svenstaro/upload-release-action@81c65b7cd4de9b2570615ce3aad67a41de5b1a13 # v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ github.workspace}}/kubernetes/open-amt-toolkit-helm.tar.gz
-          asset_name: open-amt-toolkit-helm.tar.gz
+          file: ${{ github.workspace}}/kubernetes/device-mgmt-toolkit-helm.tar.gz
+          asset_name: device-mgmt-toolkit-helm.tar.gz
           tag: ${{ github.ref }}
           overwrite: true
-          body: "Open AMT Cloud Toolkit Helm deployment tarball asset"
+          body: "Device Management Toolkit Helm deployment tarball asset"
