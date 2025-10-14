@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS profiles(
   sol_enabled BOOLEAN NULL,
   tls_signing_authority varchar(40) NULL,
   ieee8021x_profile_name citext,
+  uefi_wifi_sync_enabled BOOLEAN NULL,
   FOREIGN KEY (ieee8021x_profile_name,tenant_id)  REFERENCES ieee8021xconfigs(profile_name,tenant_id),
   PRIMARY KEY (profile_name, tenant_id)
 );
@@ -102,4 +103,25 @@ CREATE TABLE IF NOT EXISTS domains(
   CONSTRAINT domainsuffix UNIQUE (domain_suffix, tenant_id),
   PRIMARY KEY (name, domain_suffix, tenant_id)
 );
-
+CREATE TABLE IF NOT EXISTS proxyconfigs(
+  proxy_config_name citext,
+  address citext NOT NULL,
+  info_format integer NOT NULL,
+  port integer NOT NULL,
+  network_dns_suffix varchar(192),
+  creation_date timestamp,
+  tenant_id varchar(36),
+  CONSTRAINT address_port_tenant_id UNIQUE (address, port, tenant_id),
+  PRIMARY KEY (proxy_config_name, tenant_id)
+);
+CREATE TABLE IF NOT EXISTS profiles_proxyconfigs(
+  proxy_config_name citext,
+  profile_name citext,
+  FOREIGN KEY (proxy_config_name,tenant_id)  REFERENCES proxyconfigs(proxy_config_name,tenant_id),
+  FOREIGN KEY (profile_name,tenant_id)  REFERENCES profiles(profile_name,tenant_id),
+  priority integer,
+  creation_date timestamp,
+  created_by varchar(40),
+  tenant_id varchar(36),
+  PRIMARY KEY (proxy_config_name, profile_name, priority, tenant_id)
+);

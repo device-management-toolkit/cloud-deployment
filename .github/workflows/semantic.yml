@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
         with:
           egress-policy: audit
 
@@ -30,6 +30,6 @@ jobs:
           configFile: ./.github/commitlint.config.cjs
       - name: Install Dependencies
         run: npm install @commitlint/config-conventional@18.5
-      - uses: JulienKode/pull-request-name-linter-action@7770f2e08bd3761842f0c889601c5237dec6080c # v19.0.0
+      - uses: JulienKode/pull-request-name-linter-action@4fb4c2773193ad7ae5fe105c98ab30778abb1536 # v20.1.0
         with:
           configuration-path: ./.github/commitlint.config.cjs
