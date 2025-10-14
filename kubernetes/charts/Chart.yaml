@@ -26,9 +26,9 @@ appVersion: 1.4.0
 
 dependencies:
 - name: vault
-  version: "^0.28.0"
+  version: "^0.31.0"
   repository: https://helm.releases.hashicorp.com
 
 - name: kong
-  version: "^2.39.3"
+  version: "^2.52.0"
   repository: https://charts.konghq.com  
