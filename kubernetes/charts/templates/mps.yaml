@@ -73,12 +73,12 @@ spec:
             - name: "MPS_JWT_SECRET"
               valueFrom:
                 secretKeyRef:
-                  name: open-amt-admin-jwt
+                  name: device-mgmt-toolkit-admin-jwt
                   key: secret
             - name: "MPS_JWT_ISSUER"
               valueFrom:
                 secretKeyRef:
-                  name: open-amt-admin-jwt
+                  name: device-mgmt-toolkit-admin-jwt
                   key: key
             - name: MPS_WEB_ADMIN_USER
               valueFrom:

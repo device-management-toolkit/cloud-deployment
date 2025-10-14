@@ -7,10 +7,10 @@
 # Declare variables to be passed into your templates.
 
 images:
-  mps: "intel/oact-mps:latest"
-  rps: "intel/oact-rps:latest"
-  webui: "intel/oact-webui:latest"
-  mpsrouter: "intel/oact-mpsrouter:latest"
+  mps: "intel/device-mgmt-toolkit-mps:latest"
+  rps: "intel/device-mgmt-toolkit-rps:latest"
+  webui: "intel/device-mgmt-toolkit-web-ui:latest"
+  mpsrouter: "intel/device-mgmt-toolkit-mps-router:latest"
 mps:
   commonName: 
   replicaCount: 1
