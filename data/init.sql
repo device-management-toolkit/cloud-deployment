@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS profiles(
   sol_enabled BOOLEAN NULL,
   tls_signing_authority varchar(40) NULL,
   ieee8021x_profile_name citext,
+  uefi_wifi_sync_enabled BOOLEAN NULL,
   FOREIGN KEY (ieee8021x_profile_name,tenant_id)  REFERENCES ieee8021xconfigs(profile_name,tenant_id),
   PRIMARY KEY (profile_name, tenant_id)
 );
