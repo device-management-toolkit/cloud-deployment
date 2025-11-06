@@ -1,4 +1,4 @@
-FROM postgres:18@sha256:b5b154cfe5bfed10a2e68f9d064ab76cebf28b4c80bedf714e6b500f839fbe9d
+FROM postgres:18@sha256:41fc5342eefba6cc2ccda736aaf034bbbb7c3df0fdb81516eba1ba33f360162c
 COPY pg_hba.conf /var/lib/postgresql/
 RUN openssl req -new -x509 -days 365 -nodes -text -out /var/lib/postgresql/server.crt -keyout /var/lib/postgresql/server.key -subj "/CN=vprodemo.com"
 RUN chmod 600 /var/lib/postgresql/server.key
