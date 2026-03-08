@@ -18,7 +18,7 @@ services:
       MPS_SERVER: https://${MPS_COMMON_NAME}/mps
       VAULT_SERVER: https://${MPS_COMMON_NAME}/vault
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf  
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/nginx.conf:/etc/nginx/conf.d/default.conf
   rps:
     restart: always
     image: intel/oact-rps:latest
@@ -109,7 +109,7 @@ services:
     ports:
       - 5432:5432
     volumes: 
-      - ./data:/docker-entrypoint-initdb.d
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/data:/docker-entrypoint-initdb.d
   vault:
     restart: always
     image: hashicorp/vault
@@ -169,7 +169,7 @@ services:
     networks:
       - openamtnetwork
     volumes:
-      - ./kong.yaml:/home/kong/kong.yml
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/kong.yaml:/home/kong/kong.yml
     ports:
       - 443:8443
       - 8001:8001
@@ -179,7 +179,7 @@ services:
     ports:
       - 8883:8883
     volumes: 
-      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/mosquitto.conf:/mosquitto/config/mosquitto.conf
     networks:
       - openamtnetwork
     profiles:
