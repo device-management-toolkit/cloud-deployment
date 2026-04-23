@@ -9,7 +9,7 @@
 # _format_version is mandatory,
 # it specifies the minimum version of Kong that supports the format
 
-_format_version: "2.1"
+_format_version: "3.0"
 
 # _transform is optional, defaulting to true.
 # It specifies whether schema transformations should be applied when importing this file
@@ -37,11 +37,11 @@ services:
   - name: device-power-state-route
     strip_path: true
     paths:
-    - /device/power/state/(?<id>[a-fA-F0-9\-]+)
+    - ~/device/power/state/(?<id>[a-fA-F0-9\-]+)
   - name: device-power-action-route
     strip_path: true
     paths:
-    - /device/power/action/(?<id>[a-fA-F0-9\-]+)
+    - ~/device/power/action/(?<id>[a-fA-F0-9\-]+)
 
 
 - name: mps-redirection
