@@ -17,7 +17,7 @@ services:
       - .env
     environment:
       APP_COMMON_NAME: ${MPS_COMMON_NAME}
-      DB_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/consoledb
+      DB_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/rpsdb
       SECRET_ADDR: http://vault:8200
       SECRET_TOKEN: ${VAULT_TOKEN}
       HTTP_PORT: "8181"
@@ -78,7 +78,7 @@ services:
     networks:
       - openamtnetwork
     environment:
-      MPS_CONNECTION_STRING: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/consoledb?sslmode=disable
+      MPS_CONNECTION_STRING: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/rpsdb?sslmode=disable
       PORT: ${PORT}
       MPS_PORT: ${MPSWEBPORT}
     healthcheck:
@@ -154,18 +154,6 @@ services:
     ports:
       - 443:8443
       - 8001:8001
-
-  mosquitto:
-    restart: always
-    image: eclipse-mosquitto
-    ports:
-      - 8883:8883
-    volumes:
-      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
-    networks:
-      - openamtnetwork
-    profiles:
-      - "mqtt"
 
 volumes:
   app-volume:
