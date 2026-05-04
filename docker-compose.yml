@@ -11,7 +11,7 @@ services:
     networks:
       - openamtnetwork
     build:
-      context: ./sample-web-ui
+      context: ./services/sample-web-ui
       dockerfile: ./Dockerfile
     environment:
       RPS_SERVER: https://${MPS_COMMON_NAME}/rps
@@ -25,7 +25,7 @@ services:
     networks:
       - openamtnetwork
     build:
-      context: ./rps
+      context: ./services/rps
       dockerfile: ./Dockerfile
     env_file:
       - .env
@@ -84,7 +84,7 @@ services:
       retries: 3 
       test: ["CMD", "/app","--health"]
     build:
-      context: ./mps-router
+      context: ./services/mps-router
       dockerfile: ./Dockerfile
     networks:
       - openamtnetwork

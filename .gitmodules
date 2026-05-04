@@ -1,9 +1,9 @@
 [submodule "rps"]
-	path = rps
+	path = services/rps
 	url = https://github.com/device-management-toolkit/rps.git
 [submodule "sample-web-ui"]
-	path = sample-web-ui
+	path = services/sample-web-ui
 	url = https://github.com/device-management-toolkit/sample-web-ui.git
 [submodule "mps-router"]
-	path = mps-router
+	path = services/mps-router
 	url = https://github.com/device-management-toolkit/mps-router.git
