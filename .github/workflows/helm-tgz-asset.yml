@@ -26,13 +26,13 @@ jobs:
       - name: tar zip helm directory
         shell: bash
         run: |
-          (cd $GITHUB_WORKSPACE/kubernetes && tar -czvf device-mgmt-toolkit-helm.tar.gz charts)
+          tar -czvf device-mgmt-toolkit-helm.tar.gz charts
 
       - name: upload helm tarball release artifact
         uses: svenstaro/upload-release-action@29e53e917877a24fad85510ded594ab3c9ca12de # v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ github.workspace}}/kubernetes/device-mgmt-toolkit-helm.tar.gz
+          file: ${{ github.workspace}}/device-mgmt-toolkit-helm.tar.gz
           asset_name: device-mgmt-toolkit-helm.tar.gz
           tag: ${{ github.ref }}
           overwrite: true
