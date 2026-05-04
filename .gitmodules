@@ -7,3 +7,6 @@
 [submodule "mps-router"]
 	path = services/mps-router
 	url = https://github.com/device-management-toolkit/mps-router.git
+[submodule "services/console"]
+	path = services/console
+	url = https://github.com/device-management-toolkit/console.git
