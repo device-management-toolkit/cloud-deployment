@@ -1,61 +1,84 @@
-# Device Management Toolkit (formerly known as Open AMT Cloud Toolkit)
+# Device Management Toolkit — Cloud Deployment
+
+> **Looking for the legacy MPS-based deployment?** See the [`v2`](../../tree/v2) branch.
 
 [![Discord](https://img.shields.io/discord/1063200098680582154?style=for-the-badge&label=Discord&logo=discord&logoColor=white&labelColor=%235865F2&link=https%3A%2F%2Fdiscord.gg%2FDKHeUNEWVH)](https://discord.gg/DKHeUNEWVH)
 
-> Disclaimer: Production viable releases are tagged and listed under 'Releases'. All other check-ins should be considered 'in-development' and should not be used in production
+> Disclaimer: Production releases are tagged and listed under 'Releases'. Other check-ins should be considered in-development and should not be used in production.
 
-Device Management Toolkit (formerly known as Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)) offers open-source microservices and libraries to streamline Intel AMT integration, simplifying out-of-band management solutions for Intel vPro Platforms.
+This repo contains deployment artifacts for **Device Management Toolkit (Console)** — the unified service replacing the historical MPS+RPS split. Console can be deployed in either a **cloud**  or **on-prem** environment.
 
-**For detailed documentation** about the Open AMT Cloud Toolkit, see the [docs].
+For detailed documentation, see the [docs site][docs].
 
 ## Clone
-
-**Important!** Make sure you clone this repo with the `--recursive` flag since it uses git submodules.
-
-To clone live, in-development code (main branch):
 
 ```bash
 git clone --recursive https://github.com/device-management-toolkit/cloud-deployment.git
 ```
 
-Alternatively, for steps to clone and Get Started with one of the tagged releases, [see our documentation][docs].
+The `--recursive` flag is required — this repo uses git submodules under `services/`.
 
 ## Get Started
 
-There are multiple options to quickly deploy the Open AMT Cloud Toolkit:
-
-### Option 1: Local using Docker
-
-The quickest and easiest option is to set up a local stack using Docker, view our [Documentation Site][docs] and click the Get Started tab for How-To steps and examples.
-
-### Option 2: Cloud using Azure
-
-For more experienced users, deploy the stack on Azure using the 'Deploy to Azure' button below.
-
-> Note: This requires MPS, RPS, and Sample Web UI images to be built and accessible in a Container Image Registry such as Azure Container Registry (ACR), Docker Hub, or other options.
-
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdevice-management-toolkit%2Fcloud-deployment%2Fv2.5.0%2FazureDeploy.json)
-
-Optionally, deploy from AzureCLI using the following commands:
+### Local development with Docker Compose
 
 ```bash
-az group create --name openamt --location eastus
-az deployment group create --resource-group openamt --template-file azureDeploy.json
+cp .env.template .env
+# edit .env: set POSTGRES_PASSWORD, VAULT_TOKEN, AUTH_ADMIN_PASSWORD, AUTH_JWT_KEY, etc.
+docker compose up -d
 ```
 
+### Cloud (Azure) deployment
 
-Additional deployments, such as Kubernetes via Azure (AKS) or AWS (EKS), can be found in our [Documentation Site][docs].
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdevice-management-toolkit%2Fcloud-deployment%2Fmain%2FazureDeploy.json)
+
+Or via Azure CLI:
+
+```bash
+az group create --name dmt-console --location eastus
+az deployment group create --resource-group dmt-console --template-file azureDeploy.json
+```
+
+> Migration to Bicep is planned. The current ARM template is retained for compatibility.
+
+### Cloud Kubernetes (AKS, GKE, EKS) with Helm
+
+```bash
+helm install console ./charts -f ./charts/values-cloud.yaml
+```
+
+Enables headless Console + sample-web-ui + kong API gateway + mps-router.
+
+### On-prem Kubernetes with Helm
+
+```bash
+helm install console ./charts -f ./charts/values-onprem.yaml
+```
+
+Console with built-in UI; no kong, no sample-web-ui, no mps-router.
+
+### On-prem native (macOS, Linux, Windows)
+
+See [`installers/`](./installers) for native installer status.
+
+## Repository Layout
+
+- `services/` — git submodules (Console, RPS, sample-web-ui, mps-router).
+- `azureDeploy.json` — Azure ARM deployment.
+- `charts/` — Helm chart with `values-cloud.yaml` and `values-onprem.yaml` overlays.
+- `installers/` — Console native installers (on-prem).
+- `docker-compose.yml` — local-dev / cloud-style stack.
+
+## Branches
+
+- `main` (this branch) — v3 (Console-era), active development.
+- `v2` — legacy MPS-era, minimum feature/maintenance only.
 
 ## Additional Resources
 
-- For detailed documentation and Getting Started, [visit the docs site][docs].
-
-- Find a bug? Or have ideas for new features? [Open a new Issue](./issues).
-
-- Discover a vulnerability or do you have a security concern? [See our Security policy](SECURITY.md) for our reporting process.
-
-- Need additional support or want to get the latest news and events about Open AMT? Connect with the team directly through Discord.
-
-  [![Discord Banner 1](https://discordapp.com/api/guilds/1063200098680582154/widget.png?style=banner2)](https://discord.gg/DKHeUNEWVH)
+- [Documentation site][docs]
+- [Open a new issue](./issues)
+- [Security policy](SECURITY.md)
+- [Discord](https://discord.gg/DKHeUNEWVH)
 
 [docs]: https://device-management-toolkit.github.io/docs
