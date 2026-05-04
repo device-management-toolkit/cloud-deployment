@@ -1,5 +1,7 @@
 # Device Management Toolkit (formerly known as Open AMT Cloud Toolkit)
 
+> **Notice:** This is the **v2 (legacy)** maintenance branch. New deployments should use [`main`](../../tree/main) (Console). v2 receives security and critical-bug patches only.
+
 [![Discord](https://img.shields.io/discord/1063200098680582154?style=for-the-badge&label=Discord&logo=discord&logoColor=white&labelColor=%235865F2&link=https%3A%2F%2Fdiscord.gg%2FDKHeUNEWVH)](https://discord.gg/DKHeUNEWVH)
 
 > Disclaimer: Production viable releases are tagged and listed under 'Releases'. All other check-ins should be considered 'in-development' and should not be used in production
@@ -34,7 +36,7 @@ For more experienced users, deploy the stack on Azure using the 'Deploy to Azure
 
 > Note: This requires MPS, RPS, and Sample Web UI images to be built and accessible in a Container Image Registry such as Azure Container Registry (ACR), Docker Hub, or other options.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdevice-management-toolkit%2Fcloud-deployment%2Fv2.5.0%2FazureDeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdevice-management-toolkit%2Fcloud-deployment%2Fv2.33.1%2FazureDeploy.json)
 
 Optionally, deploy from AzureCLI using the following commands:
 
