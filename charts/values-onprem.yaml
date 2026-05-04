@@ -1,0 +1,18 @@
+#/*********************************************************************
+# Copyright (c) Intel Corporation 2020
+# SPDX-License-Identifier: Apache-2.0
+#**********************************************************************/
+# On-prem overlay: Console with built-in UI; no sample-web-ui, no kong, no mps-router.
+# Use: helm install console ./charts -f ./charts/values-onprem.yaml
+
+console:
+  headless: false
+
+webui:
+  enabled: false
+
+mpsrouter:
+  enabled: false
+
+kong:
+  enabled: false

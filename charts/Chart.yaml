@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #**********************************************************************/
 apiVersion: v2
-name: Chart to install MPS, RPS and Backend db
-description: A Helm chart for Kubernetes
+name: console
+description: Helm chart for Device Management Toolkit (Console) — cloud or on-prem
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -22,7 +22,7 @@ version: 1.0.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
-appVersion: 1.4.0
+appVersion: 1.24.3
 
 dependencies:
 - name: vault
@@ -32,3 +32,4 @@ dependencies:
 - name: kong
   version: "^3.0.2"
   repository: https://charts.konghq.com
+  condition: kong.enabled

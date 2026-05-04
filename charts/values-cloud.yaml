@@ -1,0 +1,22 @@
+#/*********************************************************************
+# Copyright (c) Intel Corporation 2020
+# SPDX-License-Identifier: Apache-2.0
+#**********************************************************************/
+# Cloud overlay: headless Console + sample-web-ui + kong + mps-router.
+# Use: helm install console ./charts -f ./charts/values-cloud.yaml
+
+console:
+  headless: true
+
+webui:
+  enabled: true
+
+mpsrouter:
+  enabled: true
+
+kong:
+  enabled: true
+
+vault:
+  ui:
+    serviceType: "LoadBalancer"
