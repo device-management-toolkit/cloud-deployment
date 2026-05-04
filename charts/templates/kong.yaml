@@ -1,3 +1,4 @@
+{{- if .Values.kong.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -57,8 +58,8 @@ spec:
             pathType: Exact
             backend:
               service:
-                name: mps
-                port: 
+                name: console
+                port:
                   number: 3000
 ---
 apiVersion: configuration.konghq.com/v1
@@ -152,7 +153,7 @@ spec:
   rules:
     - port: 4433
       backend:
-        serviceName: mps
+        serviceName: console
         servicePort: 4433
 ---
 apiVersion: configuration.konghq.com/v1
@@ -188,3 +189,4 @@ metadata:
 plugin: acl
 config:
   allow: ["device-mgmt-toolkit-admin"]
+{{- end }}

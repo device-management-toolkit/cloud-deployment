@@ -2,12 +2,13 @@
 # Copyright (c) Intel Corporation 2020
 # SPDX-License-Identifier: Apache-2.0
 #**********************************************************************/
+{{- if .Values.console.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: mps
-  name: mps
+    app: console
+  name: console
 spec:
   ports:
   - port: 4433
@@ -19,28 +20,28 @@ spec:
     protocol: TCP
     targetPort: 3000
   selector:
-    app: mps
+    app: console
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mps
+  name: console
   namespace: default
 spec:
-  replicas: {{ .Values.mps.replicaCount }}
+  replicas: {{ .Values.console.replicaCount }}
   selector:
     matchLabels:
-      app: mps
+      app: console
   template:
     metadata:
       labels:
-        app: mps
+        app: console
     spec:
       imagePullSecrets:
         - name: registrycredentials
       containers:
-        - name: mps
-          image: {{ .Values.images.mps }}
+        - name: console
+          image: {{ .Values.images.console }}
           readinessProbe:
             httpGet:
               path: /api/v1/health
@@ -49,54 +50,55 @@ spec:
             timeoutSeconds: 12
             failureThreshold: 3
           env:
-            - name: "MPS_LOG_LEVEL"
-              value: "{{ .Values.mps.logLevel }}"   
-            - name: "MPS_COMMON_NAME"
-              value: "{{ .Values.mps.commonName }}"
-            - name: "MPS_CONNECTION_STRING"
+            - name: "CONSOLE_HEADLESS"
+              value: "{{ .Values.console.headless }}"
+            - name: "CONSOLE_LOG_LEVEL"
+              value: "{{ .Values.console.logLevel }}"
+            - name: "CONSOLE_COMMON_NAME"
+              value: "{{ .Values.console.commonName }}"
+            - name: "CONSOLE_CONNECTION_STRING"
               valueFrom:
                 secretKeyRef:
-                  name: mps
+                  name: console
                   key: connectionString
-            - name: "MPS_VAULT_ADDRESS"
+            - name: "CONSOLE_VAULT_ADDRESS"
               value: "http://{{ .Release.Name }}-vault:8200"
-            - name: "MPS_SECRETS_PATH"
+            - name: "CONSOLE_SECRETS_PATH"
               value: 'kv/data/'
-            - name: "MPS_PORT"
+            - name: "CONSOLE_PORT"
               value: '4433'
-            - name: "MPS_INSTANCE_NAME"
+            - name: "CONSOLE_INSTANCE_NAME"
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
-            - name: "MPS_JWT_EXPIRATION"
-              value: "{{ .Values.mps.jwtExpiration }}"
-            - name: "MPS_JWT_SECRET"
+            - name: "CONSOLE_JWT_SECRET"
               valueFrom:
                 secretKeyRef:
                   name: device-mgmt-toolkit-admin-jwt
                   key: secret
-            - name: "MPS_JWT_ISSUER"
+            - name: "CONSOLE_JWT_ISSUER"
               valueFrom:
                 secretKeyRef:
                   name: device-mgmt-toolkit-admin-jwt
                   key: key
-            - name: MPS_WEB_ADMIN_USER
+            - name: CONSOLE_WEB_ADMIN_USER
               valueFrom:
                 secretKeyRef:
-                  name: mpsweb
+                  name: consoleweb
                   key: user
-            - name: MPS_WEB_ADMIN_PASSWORD
+            - name: CONSOLE_WEB_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mpsweb
+                  name: consoleweb
                   key: password
-            - name: MPS_VAULT_TOKEN
+            - name: CONSOLE_VAULT_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: vault
                   key: vaultKey
           ports:
             - containerPort: 3000
-              name: mps
+              name: webapi
             - containerPort: 4433
-              name: mpsws
+              name: cira
+{{- end }}

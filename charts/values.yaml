@@ -2,25 +2,35 @@
 # Copyright (c) Intel Corporation 2020
 # SPDX-License-Identifier: Apache-2.0
 #**********************************************************************/
-# Default values for installServersChart.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+# Base values for the Console chart.
+# Override per-flavor with values-cloud.yaml or values-onprem.yaml.
 
 images:
-  mps: "intel/device-mgmt-toolkit-mps:latest"
+  console: "intel/device-mgmt-toolkit-console:latest"
   rps: "intel/device-mgmt-toolkit-rps:latest"
   webui: "intel/device-mgmt-toolkit-web-ui:latest"
   mpsrouter: "intel/device-mgmt-toolkit-mps-router:latest"
-mps:
-  commonName: 
+
+console:
+  enabled: true
+  headless: false
+  commonName:
   replicaCount: 1
-  logLevel: "silly"
-  jwtExpiration: 1440
-ui:
-  replicaCount: 1
+  logLevel: "info"
+
 rps:
+  enabled: true
   replicaCount: 1
-  logLevel: "silly"
+  logLevel: "info"
+
+webui:
+  enabled: false
+  replicaCount: 1
+
+mpsrouter:
+  enabled: false
+  replicaCount: 1
+
 vault:
   injector:
     annotations:
@@ -32,11 +42,13 @@ vault:
     annotations:
       kuma.io/sidecar-injection: disabled
     enabled: true
-    serviceType: "LoadBalancer"
-kong:  
+    serviceType: "ClusterIP"
+
+kong:
+  enabled: false
   podAnnotations:
-      kuma.io/sidecar-injection: enabled
-      kuma.io/gateway: enabled
+    kuma.io/sidecar-injection: enabled
+    kuma.io/gateway: enabled
   env:
     UPSTREAM_KEEPALIVE_POOL_SIZE: 0
   proxy:
@@ -48,5 +60,3 @@ kong:
         parameters: []
     http:
       enabled: false
-mpsrouter:
-  replicaCount: 1

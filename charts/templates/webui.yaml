@@ -2,6 +2,7 @@
 # Copyright (c) Intel Corporation 2020
 # SPDX-License-Identifier: Apache-2.0
 #**********************************************************************/
+{{- if .Values.webui.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -50,7 +51,7 @@ kind: Deployment
 metadata:
   name: webui
 spec:
-  replicas: {{ .Values.ui.replicaCount }}
+  replicas: {{ .Values.webui.replicaCount }}
   selector:
     matchLabels:
       app: webui
@@ -77,9 +78,10 @@ spec:
             subPath: nginx.conf
         env:
           - name: "MPS_SERVER"
-            value: "https://{{.Values.mps.commonName}}/mps"
+            value: "https://{{.Values.console.commonName}}/mps"
           - name: "RPS_SERVER"
-            value: "https://{{.Values.mps.commonName}}/rps"
+            value: "https://{{.Values.console.commonName}}/rps"
         ports:
         - containerPort: 80
           name: ui
+{{- end }}
